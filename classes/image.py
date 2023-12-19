@@ -3,8 +3,8 @@ import numpy as np
 
 #demo designed for images in the RGB color space
 class Image:
-    #constructor -> numwindows must be even
-    def __init__(self, imagepath, numwindows):
+    #constructor
+    def __init__(self, imagepath):
         #a cv2 image object for the image
         self.image = cv2.imread(imagepath)
 
@@ -14,7 +14,7 @@ class Image:
         #set to 3 by default b/c demo is designed for RGB
         self.channels = 3
 
-        #3D array containing the windows/patches of the image (num_windows determines their size)
+        #3D array containing the windows/patches of the image
         self.windows = self.extract_windows()
 
     #converts color space and creates an array version of the image
@@ -25,7 +25,7 @@ class Image:
         # Convert the cv2 image instance to a NumPy array
         return np.array(rgb_image)
 
-    #extracts numwindows regions from image and stores them in windows
+    #extracts 4 regions from image and stores them in windows
     def extract_windows(self):
         # Get the height and width of the image
         height, width = self.image.shape[:2]
