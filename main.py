@@ -15,6 +15,12 @@ if __name__ == "__main__":
     ssim.MSSIM(ground_truth, regenerated)
 
     #display results
+    print("")
     print(f"MSSIM: {ssim.mssim_val}")
+    print("")
     print("SSIM map:")
-    print(ssim.ssim_map)
+    print(" ----------------------------------------")
+    print(f"|{ssim.ssim_map[0,0]} | {ssim.ssim_map[0,1]}|")
+    print(" ----------------------------------------")
+    print(f"|{ssim.ssim_map[1,0]} | {ssim.ssim_map[1,1]}|")
+    print("-----------------------------------------")
