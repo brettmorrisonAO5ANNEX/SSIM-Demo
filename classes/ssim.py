@@ -48,13 +48,13 @@ class SSIM:
 
         return (luminance_comp ** self.alpha) * (contrast_comp ** self.beta) * (structural_comp ** self.gamma)
 
-    def c(self, gt_window_channel, regen_window_channel):
+    def l(self, gt_window_channel, regen_window_channel):
         mu_x = np.mean(gt_window_channel)
         mu_y = np.mean(regen_window_channel)
 
         return (2*mu_x*mu_y + self.C1)/(mu_x**2 + mu_y**2 + self.C1)
 
-    def l(self, gt_window_channel, regen_window_channel):
+    def c(self, gt_window_channel, regen_window_channel):
         sigma_x = np.std(gt_window_channel)
         sigma_y = np.std(regen_window_channel)
 
@@ -63,6 +63,27 @@ class SSIM:
     def s(self, gt_window_channel, regen_window_channel):
         sigma_x = np.std(gt_window_channel)
         sigma_y = np.std(regen_window_channel)
-        sigma_xy = np.cov(gt_window_channel, regen_window_channel)
+        sigma_xy = self.calculate_sigma_xy(gt_window_channel, regen_window_channel)
 
         return (sigma_xy + self.C3)/(sigma_x*sigma_y + self.C3)
+    
+    def calculate_sigma_xy(self, gt_window_channel, regen_window_channel):
+        #define width and height
+        height, width = gt_window_channel.shape
+
+        #define mean for each image
+        mu_x = np.mean(gt_window_channel)
+        mu_y = np.mean(regen_window_channel)
+
+        sum = 0.0
+        for i in range(height):
+            for j in range(width):
+                sum += (gt_window_channel[i,j] - mu_x)*(regen_window_channel[i,j] - mu_y)
+        
+        return sum / (width*height - 1)
+
+            
+
+
+
+

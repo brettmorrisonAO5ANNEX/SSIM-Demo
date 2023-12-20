@@ -46,18 +46,18 @@ class Image:
         windows = np.empty((4, window_height, window_width, 3))
 
         curr_window = 0
-        for x in range(0, padded_width, window_width):
-            for y in range(0, padded_height, window_height):
+        for y in range(0, padded_height, window_height):
+            for x in range(0, padded_width, window_width):
                 windows[curr_window] = padded_image[y:y+window_height, x:x+window_width]
                 curr_window += 1
 
         return windows
     
     #for testing
-    def display_windows(self):
+    def save_windows(self, name):
         window_num = 0
         for window in self.windows:
             #convert to uint8
             window_8bit = window.astype(np.uint8)
-            cv2.imwrite(f"images/window{window_num}.png", cv2.cvtColor(window_8bit, cv2.COLOR_RGB2BGR))
+            cv2.imwrite(f"windows/{name}_window{window_num+1}.png", cv2.cvtColor(window_8bit, cv2.COLOR_RGB2BGR))
             window_num += 1
