@@ -1,4 +1,7 @@
 # SSIM-Demo
+This is a 'simple' implementation of SSIM using python. It has many limitations: hard-coded 4 window split, assumes input images are the same size, desined for RGB color-space... It works for the purpose of the demo though! When run, the main function will output both an MSSIM value and an SSIM map in the form of a 2x2 matrix (read below for more info on these).
+
+## Demo Diagram
 ![overview](https://github.com/brettmorrisonAO5ANNEX/SSIM-Demo/assets/49254129/018cdc35-17fc-4eee-adbf-365c9316a2ff)
 ## Paper 
 https://ece.uwaterloo.ca/~z70wang/publications/ssim.pdf
