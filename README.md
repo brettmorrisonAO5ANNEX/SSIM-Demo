@@ -21,7 +21,7 @@ from the ground truth and regenerated image...
 
 ## Example
 
-When run on the following images: ground truth (right) and 'regenerated' (left)
+When run on the following images: ground truth (left) and 'regenerated' (right)
 
 <img src="https://github.com/brettmorrisonAO5ANNEX/SSIM-Demo/assets/49254129/8a03936d-7172-4262-bec8-1fca9348bb38" alt="willy_gt" width="25%" height="25%">
 <img src="https://github.com/brettmorrisonAO5ANNEX/SSIM-Demo/assets/49254129/4b7e5c06-646c-42b8-93ea-b6a0da34bee8" alt="willy_r" width="25%" height="25%">
